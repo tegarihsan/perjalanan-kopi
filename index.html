@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Katalog Toko Kopi Perjalanan Kopi - Pengalaman kopi terbaik di Semarang dengan nuansa hangat dan modern.">
+    <title>Perjalanan Kopi</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Assets/favico.png">
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="Assets/logo-coklat.png" alt="Perjalanan Kopi Logo" id="nav-logo">
+                <span class="logo-text">Perjalanan Kopi</span>
+            </div>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+                <i class="bi bi-list"></i>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#beranda" class="nav-link active" data-section="Beranda">Beranda</a></li>
+                <li><a href="#menu" class="nav-link" data-section="Menu">Menu</a></li>
+                <li><a href="#lokasi" class="nav-link" data-section="Lokasi">Alamat</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="beranda" class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">Selamat Datang di Perjalanan Kopi</h1>
+                <p class="hero-description">
+                    Bareng temen ngopi, tiap perjalanan jadi lebih hidup. Di Perjalanan Kopi, kami percaya kopi bukan cuma minuman, tapi teman setia yang nemenin cerita, tawa, dan petualanganmu. Dari Semarang ke mana pun, mari kita lanjutkan perjalanan sambil ngopi bareng!
+                </p>
+                <br>
+                <a href="#menu" class="cta-button">Lihat Menu</a>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="menu-section">
+            <div class="section-header">
+                <h2 class="section-title">Katalog Menu</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="menu-slider-container">
+                <div class="menu-slider" id="menu-slider">
+                    <!-- Cards will be cloned for seamless loop in JS if needed, but let's start with static and use JS for movement -->
+                    <div class="menu-card">
+                        <img src="Assets/Americano-Post.webp" alt="Americano">
+                        <div class="card-info"><h3>Americano</h3></div>
+                    </div>
+                    <div class="menu-card">
+                        <img src="Assets/Americano-Peach-Post.webp" alt="Americano Peach">
+                        <div class="card-info"><h3>Americano Peach</h3></div>
+                    </div>
+                    <div class="menu-card">
+                        <img src="Assets/Brown-Sugar-Fresh-Milk-Post.webp" alt="Brown Sugar Fresh Milk">
+                        <div class="card-info"><h3>Brown Sugar Fresh Milk</h3></div>
+                    </div>
+                    <div class="menu-card">
+                        <img src="Assets/Butterscotch-Post.webp" alt="Butterscotch">
+                        <div class="card-info"><h3>Butterscotch</h3></div>
+                    </div>
+                    <div class="menu-card">
+                        <img src="Assets/Caramel-Post.webp" alt="Caramel">
+                        <div class="card-info"><h3>Caramel</h3></div>
+                    </div>
+                    <div class="menu-card">
+                        <img src="Assets/Chocolate-Post.webp" alt="Chocolate">
+                        <div class="card-info"><h3>Chocolate</h3></div>
+                    </div>
+                    <div class="menu-card">
+                        <img src="Assets/Kopi-Susu-Post.webp" alt="Kopi Susu">
+                        <div class="card-info"><h3>Kopi Susu</h3></div>
+                    </div>
+                    <div class="menu-card">
+                        <img src="Assets/Kopsu-Gula-Aren-Post.webp" alt="Kopsu Gula Aren">
+                        <div class="card-info"><h3>Kopsu Gula Aren</h3></div>
+                    </div>
+                    <div class="menu-card">
+                        <img src="Assets/Red-Velvet-Post.webp" alt="Red Velvet">
+                        <div class="card-info"><h3>Red Velvet</h3></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lokasi Section -->
+        <section id="lokasi" class="lokasi-section">
+            <div class="section-header">
+                <h2 class="section-title">Lokasi Kami</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="map-container">
+                <div id="map"></div>
+                <div class="map-overlay" onclick="window.open('https://maps.app.goo.gl/H1Bbeb9qdSi9t1E19', '_blank')">
+                    <span>Buka di Google Maps</span>
+                </div>
+            </div>
+            <div class="address-info">
+                <p>2937+8QC, Jl. Srikaton Tgh, Purwoyoso, Kec. Ngaliyan, Kota Semarang, Jawa Tengah 50184, Indonesia</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-contact">
+                <a href="https://wa.me/6285777469269" target="_blank" class="footer-link">+62 857-7746-9269</a>
+                <span class="footer-separator">|</span>
+                <a href="https://www.instagram.com/perjalanankopi_/" target="_blank" class="footer-link">@perjalanankopi_</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 Perjalanan Kopi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
